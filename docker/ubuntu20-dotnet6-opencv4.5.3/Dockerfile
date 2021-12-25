@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-focal as builder
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal as builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV OPENCV_VERSION=4.5.3
@@ -58,7 +58,7 @@ RUN cd opencv && mkdir build && cd build && \
     -D BUILD_PERF_TESTS=OFF \
     -D BUILD_TESTS=OFF \
     -D BUILD_JAVA=OFF \
-    -D BUILD_opencv_apps=OFF \
+    -D BUILD_opencv_app=OFF \
     -D BUILD_opencv_barcode=OFF \
     -D BUILD_opencv_java_bindings_generator=OFF \
     -D BUILD_opencv_js_bindings_generator=OFF \
@@ -102,7 +102,7 @@ RUN mkdir /opencvsharp/make && cd /opencvsharp/make && \
 
 ########## Test native .so file ##########
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0-focal
+FROM mcr.microsoft.com/dotnet/sdk:6.0-focal
 RUN apt-get update && apt-get -y install --no-install-recommends gcc
 # /usr/lib/libOpenCvSharpExtern.so
 # /usr/local/lib/libopencv_*.a
@@ -123,7 +123,7 @@ int main(){ \n\
 
 ########## Test .NET class libraries ##########
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0-focal
+FROM mcr.microsoft.com/dotnet/sdk:6.0-focal
 COPY --from=builder /usr/lib /usr/lib
 # Install Build the C# part of OpenCvSharp
 RUN git clone https://github.com/shimat/opencvsharp.git && cd opencvsharp
@@ -132,7 +132,7 @@ RUN cd /opencvsharp/src/OpenCvSharp && \
     cd /opencvsharp/src/OpenCvSharp.Extensions && \
     dotnet build -c Release -f netcoreapp2.1
 
-RUN dotnet test /opencvsharp/test/OpenCvSharp.Tests/OpenCvSharp.Tests.csproj -c Release -f net5.0 --runtime ubuntu.20.04-x64 --logger "trx;LogFileName=test-results.trx" < /dev/null
+RUN dotnet test /opencvsharp/test/OpenCvSharp.Tests/OpenCvSharp.Tests.csproj -c Release -f net6.0 --runtime ubuntu.20.04-x64 --logger "trx;LogFileName=test-results.trx" < /dev/null
 
 # Simple console app test using NuGet
 #RUN dotnet new console -f netcoreapp3.1 -o "ConsoleApp01" && cd /ConsoleApp01 && \
@@ -156,5 +156,5 @@ RUN dotnet test /opencvsharp/test/OpenCvSharp.Tests/OpenCvSharp.Tests.csproj -c 
 
 ########## Final image ##########
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-focal as final
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal as final
 COPY --from=builder /usr/lib /usr/lib
