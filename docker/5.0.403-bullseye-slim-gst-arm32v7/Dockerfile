@@ -83,7 +83,9 @@ RUN cd opencv && mkdir build && cd build && \
     -D BUILD_opencv_surface_matching=OFF \
     -D BUILD_opencv_videostab=OFF \
     -D BUILD_opencv_wechat_qrcode=OFF \
-    -D WITH_GSTREAMER=OFF \
+    -D WITH_1394=OFF \
+    -D WITH_FFMPEG=OFF \
+    -D WITH_GSTREAMER=ON \
     -D WITH_ADE=OFF \
     -D OPENCV_ENABLE_NONFREE=ON \
     .. && make -j$(nproc) && make install && ldconfig
