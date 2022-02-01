@@ -33,6 +33,14 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
       x264 \
       libtesseract-dev \
       libgdiplus \
+    libgstreamer1.0-0 \
+      gstreamer1.0-plugins-base \
+      gstreamer1.0-plugins-good \
+      gstreamer1.0-plugins-bad \
+      gstreamer1.0-plugins-ugly \
+      gstreamer1.0-libav \
+      gstreamer1.0-doc \
+      gstreamer1.0-tools \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/*
 
