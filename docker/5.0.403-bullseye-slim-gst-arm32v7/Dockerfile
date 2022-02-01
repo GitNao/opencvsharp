@@ -91,7 +91,7 @@ RUN cd opencv && mkdir build && cd build && \
     .. && make -j$(nproc) && make install && ldconfig
 
 # Download OpenCvSharp
-RUN git clone https://github.com/shimat/opencvsharp.git && cd opencvsharp
+RUN git clone -b main_armv7 https://github.com/GitNao/opencvsharp.git && cd opencvsharp
 
 # Install the Extern lib.
 RUN mkdir /opencvsharp/make && cd /opencvsharp/make && \
