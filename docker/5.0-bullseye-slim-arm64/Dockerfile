@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0.403-bullseye-slim-arm32v7
+FROM mcr.microsoft.com/dotnet/sdk:5.0-bullseye-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 ARG OPENCV_VERSION=4.5.3
@@ -33,15 +33,6 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
       x264 \
       libtesseract-dev \
       libgdiplus \
-    libgstreamer1.0-0 \
-    libgstreamer-plugins-base1.0-0 \
-    libgstreamer-plugins-base1.0-dev \
-      gstreamer1.0-plugins-base \
-      gstreamer1.0-plugins-good \
-      gstreamer1.0-plugins-bad \
-      gstreamer1.0-plugins-ugly \
-      gstreamer1.0-libav \
-      gstreamer1.0-tools \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -92,9 +83,7 @@ RUN cd opencv && mkdir build && cd build && \
     -D BUILD_opencv_surface_matching=OFF \
     -D BUILD_opencv_videostab=OFF \
     -D BUILD_opencv_wechat_qrcode=OFF \
-    -D WITH_1394=OFF \
-    -D WITH_FFMPEG=OFF \
-    -D WITH_GSTREAMER=ON \
+    -D WITH_GSTREAMER=OFF \
     -D WITH_ADE=OFF \
     -D OPENCV_ENABLE_NONFREE=ON \
     .. && make -j$(nproc) && make install && ldconfig
