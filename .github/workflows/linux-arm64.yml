@@ -1,4 +1,4 @@
-name: Linux ARM (Docker)
+name: Linux ARM64 (Docker)
 
 on:
   pull_request:
@@ -32,7 +32,7 @@ jobs:
             --output=type=docker \
             --platform=linux/arm64 \
             --build-arg OPENCV_VERSION \
-            ./docker/5.0-bullseye-slim
+            ./docker/5.0-bullseye-slim-arm64
 
       - name: Extract build files from Docker instance
         run: |
