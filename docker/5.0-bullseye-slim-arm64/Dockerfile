@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0-bullseye-slim
+FROM mcr.microsoft.com/dotnet/sdk:5.0-focal-arm64v8
 
 ENV DEBIAN_FRONTEND=noninteractive
 ARG OPENCV_VERSION=4.5.3
