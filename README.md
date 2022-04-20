@@ -6,11 +6,17 @@ Old versions of OpenCvSharp are stored in [opencvsharp_2410](https://github.com/
 
 ## NuGet
 
+### Managed libraries
 | Package | Description | Link |
 |---------|-------------|------|
 |**OpenCvSharp4**| OpenCvSharp core libraries | [![NuGet version](https://badge.fury.io/nu/OpenCvSharp4.svg)](https://badge.fury.io/nu/OpenCvSharp4) |
+|**OpenCvSharp4.Extensions**| GDI+ Extensions | [![NuGet version](https://badge.fury.io/nu/OpenCvSharp4.Extensions.svg)](https://badge.fury.io/nu/OpenCvSharp4.Extensions) |
 |**OpenCvSharp4.WpfExtensions**| WPF Extensions | [![NuGet version](https://badge.fury.io/nu/OpenCvSharp4.WpfExtensions.svg)](https://badge.fury.io/nu/OpenCvSharp4.WpfExtensions) |
 |**OpenCvSharp4.Windows**| All-in-one package for Windows (except UWP) | [![NuGet version](https://badge.fury.io/nu/OpenCvSharp4.Windows.svg)](https://badge.fury.io/nu/OpenCvSharp4.Windows) |
+
+### Native bindings
+| Package | Description | Link |
+|---------|-------------|------|
 |**OpenCvSharp4.runtime.win**| Native bindings for Windows x64/x86 (except UWP) | [![NuGet version](https://badge.fury.io/nu/OpenCvSharp4.runtime.win.svg)](https://badge.fury.io/nu/OpenCvSharp4.runtime.win) |
 |**OpenCvSharp4.runtime.uwp**| Native bindings for UWP (Universal Windows Platform) x64/x86/ARM | [![NuGet version](https://badge.fury.io/nu/OpenCvSharp4.runtime.uwp.svg)](https://badge.fury.io/nu/OpenCvSharp4.runtime.uwp) |
 |**OpenCvSharp4.runtime.ubuntu.18.04-x64**| Native bindings for Ubuntu 18.04 x64 | [![NuGet version](https://badge.fury.io/nu/OpenCvSharp4.runtime.ubuntu.18.04-x64.svg)](https://badge.fury.io/nu/OpenCvSharp4.runtime.ubuntu.18.04-x64) |
@@ -69,7 +75,7 @@ This issue may be helpful: https://github.com/shimat/opencvsharp/issues/920
 If you do not use NuGet, get DLL files from the [release page](https://github.com/shimat/opencvsharp/releases).
 
 ## Target OpenCV
-* [OpenCV 4.5.3](http://opencv.org/) with [opencv_contrib](https://github.com/opencv/opencv_contrib)
+* [OpenCV 4.5.](http://opencv.org/) with [opencv_contrib](https://github.com/opencv/opencv_contrib)
 
 ## Requirements
 * [.NET Framework 4.6.1](http://www.microsoft.com/ja-jp/download/details.aspx?id=1639) / [.NET Core 2.0](https://www.microsoft.com/net/download) / [Mono](http://www.mono-project.com/Main_Page)

@@ -38,7 +38,7 @@ namespace OpenCvSharp.Internal
         private const UnmanagedType StringUnmanagedTypeWindows = UnmanagedType.LPStr;
 
         private const UnmanagedType StringUnmanagedTypeNotWindows =
-#if NET461 || NETSTANDARD2_0
+#if NET48 || NETSTANDARD2_0
             UnmanagedType.LPStr;
 #else
             UnmanagedType.LPUTF8Str;
@@ -169,7 +169,7 @@ namespace OpenCvSharp.Internal
         /// <returns></returns>
         public static bool IsWindows()
         {
-#if NET461
+#if NET48
             return !IsUnix();
 #else
             return RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
@@ -182,7 +182,7 @@ namespace OpenCvSharp.Internal
         /// <returns></returns>
         public static bool IsUnix()
         {
-#if NET461
+#if NET48
             var p = Environment.OSVersion.Platform;
             return (p == PlatformID.Unix ||
                     p == PlatformID.MacOSX ||
@@ -212,10 +212,11 @@ namespace OpenCvSharp.Internal
         /// <returns></returns>
         public static bool IsWasm()
         {
-            #if NET6_0
+#if NET6_0
             return RuntimeInformation.OSArchitecture == Architecture.Wasm;
-            #endif
+#else
             return false;
+#endif
         }
 
         /// <summary>

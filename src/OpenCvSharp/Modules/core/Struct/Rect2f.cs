@@ -67,8 +67,8 @@ namespace OpenCvSharp
             {
                 X = left,
                 Y = top,
-                Width = right - left + 1,
-                Height = bottom - top + 1
+                Width = right - left,
+                Height = bottom - top
             };
 
             if (r.Width < 0)
@@ -422,7 +422,7 @@ namespace OpenCvSharp
         /// <inheritdoc />
         public override readonly int GetHashCode()
         {
-#if NET461 || NETSTANDARD2_0
+#if NET48 || NETSTANDARD2_0
             unchecked
             {
                 var hashCode = X.GetHashCode();

@@ -1,6 +1,6 @@
 FROM public.ecr.aws/lambda/dotnet:5.0
 
-ENV OPENCV_VERSION=4.5.3
+ENV OPENCV_VERSION=4.5.5
 
 WORKDIR /
 
@@ -55,10 +55,10 @@ RUN cd opencv && mkdir build && cd build && \
     -D BUILD_opencv_structured_light=OFF \
     -D BUILD_opencv_surface_matching=OFF \
     -D BUILD_opencv_videostab=OFF \
-    -D BUILD_opencv_wechat_qrcode=OFF \
+    -D BUILD_opencv_wechat_qrcode=ON \
     -D WITH_GSTREAMER=OFF \
     -D OPENCV_ENABLE_NONFREE=ON \
-    .. && make -j8 && make install
+    .. && make -j$(nproc) && make install
 
 # Download OpenCvSharp
 RUN wget https://github.com/shimat/opencvsharp/archive/master.zip && \

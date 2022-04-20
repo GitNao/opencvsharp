@@ -29,7 +29,7 @@ namespace OpenCvSharp.Tests.Dnn
             var net = caffe.Net;
             var classNames = caffe.ClassNames;
 
-            //Console.WriteLine("Layer names: {0}", string.Join(", ", net.GetLayerNames()));
+            //testOutputHelper.WriteLine($"Layer names: {string.Join(", ", net.GetLayerNames())}");
             var layerName = net.GetLayerNames()[0];
             Assert.NotNull(layerName);
             Assert.Equal(1, net.GetLayerId(layerName!));
@@ -60,18 +60,7 @@ namespace OpenCvSharp.Tests.Dnn
                 if (File.Exists(fileName)) 
                     return;
 
-                int beforePercent = 0;
-                var contents = DownloadBytes(uri, progress =>
-                {
-                    if (progress.ProgressPercentage == beforePercent)
-                        return;
-                    beforePercent = progress.ProgressPercentage;
-                    testOutputHelper.WriteLine("[{0}] Download Progress: {1}/{2} ({3}%)",
-                        fileName,
-                        progress.BytesReceived,
-                        progress.TotalBytesToReceive,
-                        progress.ProgressPercentage);
-                });
+                var contents = FileDownloader.DownloadData(uri);
                 File.WriteAllBytes(fileName, contents);
             }
         }
